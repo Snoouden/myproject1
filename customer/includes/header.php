@@ -183,7 +183,7 @@ if(isset($_GET['pro_id'])){
 
              <i class="fa fa-shopping-cart"></i>
 
-             <span>4 Items In Your Cart</span>
+             <span><?php items(); ?> Items In Your Cart</span>
 
             </a><!-- btn navbar-btn btn-primary  Finish -->
 

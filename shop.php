@@ -30,8 +30,7 @@
                
              </div><!-- col-md-3 Finish -->
            
-           <div class="col-md-9"><!-- col-md-9 Begin -->
-               <div class="box"><!-- box Begin -->
+           <div class="col-md-9"><!-- col-md-9 Begin -->              
                   
                <?php 
                
