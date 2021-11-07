@@ -80,7 +80,7 @@ if(isset($_GET['pro_id'])){
                     ?>
 
                   </a>
-                  <a href="checkout.php">4 Items In Your Cart | Total Price: $300 </a>
+                  <a href="checkout.php"> <?php items(); ?> Items In Your Cart | Total Price: <?php total_price(); ?> </a>
 
         </div><!-- col-md-6 offer Finish --> 
            <div class="col-md-6"><!-- col-md-6 Begin -->
@@ -178,7 +178,7 @@ if(isset($_GET['pro_id'])){
 
             </div><!-- padding-nav Finish -->
 
-            <a href="cart.php" class="btn navbar-btn btn-primary right"><!-- btn navbar-btn btn-primary Begin -->
+            <a href="../cart.php" class="btn navbar-btn btn-primary right"><!-- btn navbar-btn btn-primary Begin -->
 
 
              <i class="fa fa-shopping-cart"></i>
