@@ -248,7 +248,7 @@ include("functions/functions.php");
                    <?php
                    
                    if (isset($_GET['edit_account'])){
-                       include("edit_account.php");
+                    include("edit_account.php");
                    }
                    
                    ?>
