@@ -92,7 +92,7 @@
             
             <tr><!--  tr Begin  -->
                 
-                <th> <?php echo $i; ?> </th>
+            <th> <?php echo $i; ?> </th>
                 <td> $<?php echo $due_amount; ?> </td>
                 <td> <?php echo $invoice_no; ?> </td>
                 <td> <?php echo $qty; ?> </td>

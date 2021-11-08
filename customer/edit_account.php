@@ -6,8 +6,6 @@
 
     $run_customer = mysqli_query($con,$get_customer);
 
-    $row_customer = mysqli_fetch_array($row_customer);
-
     $customer_id = $row_customer['customer_id'];
 
     $customer_name = $row_customer['customer_name'];
@@ -20,7 +18,7 @@
 
     $customer_contact = $row_customer['customer_contact'];
 
-    $customer_address = $row_customer['customer_addres'];
+    $customer_address = $row_customer['customer_address'];
 
     $customer_image = $row_customer['customer_image'];
 
