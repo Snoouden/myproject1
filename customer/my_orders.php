@@ -78,7 +78,7 @@
                 
                 $i++;
                 
-                if($order_status=='pending'){
+                if($row_orders['order_status'] == 'Pending'){
                     
                      $order_status = 'Unpaid';
                     
