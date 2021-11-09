@@ -80,11 +80,11 @@
                 
                 if($order_status=='pending'){
                     
-                    $order_status = 'Unpaid';
+                     $order_status = 'Unpaid';
                     
                 }else{
                     
-                    $order_status = 'Paid';
+                     $order_status = 'Paid';
                     
                 }
             

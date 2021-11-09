@@ -82,19 +82,31 @@
         <div id="page-wrapper"><!-- #page-wrapper begin -->
             <div class="container-fluid"><!-- container-fluid begin -->
                 
-                <?php
+            <?php
                 
-                    if(isset($_GET['dashboard'])){
+                if(isset($_GET['dashboard'])){
                     
                     include("dashboard.php");
                     
-                }   if(isset($_GET['insert_product'])){
+            }   if(isset($_GET['insert_product'])){
                     
                     include("insert_product.php");
                     
-                }
-            
-                ?>
+            }   if(isset($_GET['view_product'])){
+                    
+                    include("view_product.php");
+                    
+            }   if(isset($_GET['delete_product'])){
+                    
+                    include("delete_product.php");
+                    
+            }   if(isset($_GET['edit_product'])){
+                    
+                    include("edit_product.php");
+                    
+            }
+    
+            ?>
                 
             </div><!-- container-fluid finish -->
         </div><!-- #page-wrapper finish -->
