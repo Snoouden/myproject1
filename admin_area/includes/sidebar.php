@@ -136,7 +136,7 @@
 
                 <ul id="p_cat" class="collapse"><!-- ul begin -->
                     <li><!-- li begin -->
-                        <a href="index.php?insert_p_cart"> Insert Product Category </a>                       
+                        <a href="index.php?insert_p_cat"> Insert Product Category </a>                       
                     </li><!-- li finish -->
 
                     <li><!-- li begin -->
@@ -158,7 +158,7 @@
 
                 <ul id="cat" class="collapse"><!-- ul begin -->
                     <li><!-- li begin -->
-                        <a href="index.php?insert_cart"> Insert Category </a>                       
+                        <a href="index.php?insert_cat"> Insert Category </a>                       
                     </li><!-- li begin -->
 
                     <li><!-- li begin -->

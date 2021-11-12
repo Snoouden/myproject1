@@ -339,7 +339,7 @@ if(isset($_POST['update'])){
         
        echo "<script>alert('Your product has been updated Successfully')</script>"; 
         
-       echo "<script>window.open('index.php?view_products','_self')</script>"; 
+       echo "<script>window.open('index.php?view_product','_self')</script>"; 
         
     }
             

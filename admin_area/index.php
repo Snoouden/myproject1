@@ -84,29 +84,77 @@
                 
             <?php
                 
-                if(isset($_GET['dashboard'])){
+                    if(isset($_GET['dashboard'])){
                     
-                    include("dashboard.php");
+                        include("dashboard.php");
                     
-            }   if(isset($_GET['insert_product'])){
+                 }   if(isset($_GET['insert_product'])){
                     
-                    include("insert_product.php");
+                        include("insert_product.php");
                     
-            }   if(isset($_GET['view_product'])){
+                }   if(isset($_GET['view_product'])){
                     
-                    include("view_product.php");
+                        include("view_product.php");
                     
-            }   if(isset($_GET['delete_product'])){
+                }   if(isset($_GET['delete_product'])){
                     
-                    include("delete_product.php");
+                        include("delete_product.php");
                     
-            }   if(isset($_GET['edit_product'])){
+                }   if(isset($_GET['edit_product'])){
                     
-                    include("edit_product.php");
+                        include("edit_product.php");
                     
-            }
-    
-            ?>
+                }   if(isset($_GET['insert_p_cat'])){
+                        
+                        include("insert_p_cat.php");
+                        
+                }   if(isset($_GET['view_p_cats'])){
+                        
+                        include("view_p_cats.php");
+                        
+                }   if(isset($_GET['delete_p_cat'])){
+                        
+                        include("delete_p_cat.php");
+                        
+                }   if(isset($_GET['edit_p_cat'])){
+                        
+                        include("edit_p_cat.php");
+                        
+                }   if(isset($_GET['insert_cat'])){
+                        
+                        include("insert_cat.php");
+                    
+                }   if(isset($_GET['view_cats'])){
+                    
+                        include("view_cats.php");
+                    
+                }   if(isset($_GET['edit_cat'])){
+                    
+                        include("edit_cat.php");
+                    
+                }   if(isset($_GET['delete_cat'])){
+                    
+                        include("delete_cat.php");
+                    
+                }   if(isset($_GET['insert_slide'])){
+                        
+                         include("insert_slide.php");
+                    
+                }   if(isset($_GET['view_slides'])){
+                    
+                    include("view_slides.php");
+                    
+                }   if(isset($_GET['delete_slide'])){
+                    
+                    include("delete_slide.php");
+                    
+                }   if(isset($_GET['edit_slide'])){
+                    
+                    include("edit_slide.php");
+                    
+                }
+        
+                ?>
                 
             </div><!-- container-fluid finish -->
         </div><!-- #page-wrapper finish -->
