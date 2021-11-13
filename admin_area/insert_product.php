@@ -25,7 +25,7 @@
                 <ol class="breadcrumb"><!-- breadcrumb begin -->
                     <li class="active"><!-- active begin -->
                         
-                        <i class="fa fa-dashboard"></i> Dashboard / View Products
+                        <i class="fa fa-dashboard"></i> Dashboard / Insert Products
                         
                     </li><!-- active finish -->
                 </ol><!-- breadcrumb finish -->
