@@ -32,7 +32,7 @@
                            ?>
                     
                         <li>
-                         <<?php 
+                        <?php 
                            
                            if(!isset($_SESSION['customer_email'])){
                                
@@ -47,6 +47,7 @@
                            ?>
                            
                         </li>
+                        <li><a href="../terms.php">Terms & Conditions</a></li>
                 </ul><!-- ul Finish -->
 
                 <hr class="hidden-mb hidden-lg hidden-sm">
@@ -122,20 +123,20 @@
                    don't miss our latest update products.
                 </p>
 
-                <form action="" method=""><!-- form Begin -->
-                     <div class="input-group"><!-- input-group Begin -->
-
-                         <input type="text" class="form-control" name="email">
-                         
-                         <span class="input-group-btn"><!-- input-group btn Begin -->
-
-                              <input type="submit" value="subscribe" class="btn btn-default">
-
-                         </span><!-- input-group btn Finish -->
-
-                     </div><!-- input-group Finish -->
-
-
+                <form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=M-devMedia', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" method="post"><!-- form begin -->
+                    <div class="input-group"><!-- input-group begin -->
+                        
+                        <input type="text" class="form-control" name="email">
+                        
+                        <input type="hidden" value="M-devMedia" name="uri"/><input type="hidden" name="loc" value="en_US"/>
+                        
+                        <span class="input-group-btn"><!-- input-group-btn begin -->
+                            
+                            <input type="submit" value="subscribe" class="btn btn-default">
+                            
+                        </span><!-- input-group-btn Finish -->
+                        
+                    </div><!-- input-group Finish -->
                 </form><!-- form Finish -->
 
                 <hr>
