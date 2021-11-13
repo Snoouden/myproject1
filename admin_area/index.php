@@ -224,6 +224,10 @@
                     
                         include("user_profile.php");
                     
+                }   if(isset($_GET['edit_css'])){
+                        
+                        include("edit_css.php");
+                        
                 }
         
                 ?>
