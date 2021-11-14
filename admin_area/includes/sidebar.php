@@ -124,6 +124,24 @@
 
             </li><!-- li Finish -->
 
+            <li><!-- li begin -->
+                <a href="#" data-toggle="collapse" data-target="#manufacturer"><!-- a href begin -->
+                        
+                        <i class="fa fa-fw fa-star"></i> Brand
+                        <i class="fa fa-fw fa-caret-down"></i>
+                        
+                </a><!-- a href finish -->
+                
+                <ul id="manufacturer" class="collapse"><!-- collapse begin -->
+                    <li><!-- li begin -->
+                        <a href="index.php?insert_manufacturer"> Insert Brand </a>
+                    </li><!-- li finish -->
+                    <li><!-- li begin -->
+                        <a href="index.php?view_manufacturers"> View Brand </a>
+                    </li><!-- li finish -->
+                </ul><!-- collapse finish -->
+                
+            </li><!-- li finish -->
 
             <li><!-- li begin -->
 

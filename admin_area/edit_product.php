@@ -27,6 +27,8 @@
         $p_cat = $row_edit['p_cat_id'];
         
         $cat = $row_edit['cat_id'];
+
+        $m_id = $row_edit['manufacturer_id'];
         
         $p_image1 = $row_edit['product_img1'];
         
@@ -41,6 +43,16 @@
         $p_desc = $row_edit['product_desc'];
         
     }
+        
+        $get_manufacturer = "select * from manufacturers where manufacturer_id='$m_id'";
+        
+        $run_manufacturer = mysqli_query($con,$get_manufacturer);
+        
+        $row_manufacturer = mysqli_fetch_array($run_manufacturer);
+        
+        $manufacturer_id = $row_manufacturer['manufacturer_id'];
+        
+        $manufacturer_title = $row_manufacturer['manufacturer_title'];
         
         $get_p_cat = "select * from product_categories where p_cat_id='$p_cat'";
         
@@ -60,29 +72,30 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Edit Products </title>
-    <link rel="stylesheet" href="css/bootstrap-337.min.css">
-    <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
+    <title> Insert Products </title>
 </head>
 <body>
     
 <div class="row"><!-- row Begin -->
     
-           <div class="col-lg-12"><!-- col-lg-12 begin -->
-                <ol class="breadcrumb"><!-- breadcrumb begin -->
-                    <li class="active"><!-- active begin -->
-                        
-                        <i class="fa fa-dashboard"></i> Dashboard / View Products
-                        
-                    </li><!-- active finish -->
-                </ol><!-- breadcrumb finish -->
-          </div><!-- col-lg-12 finish -->
+    <div class="col-lg-12"><!-- col-lg-12 Begin -->
+        
+        <ol class="breadcrumb"><!-- breadcrumb Begin -->
+            
+            <li class="active"><!-- active Begin -->
+                
+                <i class="fa fa-dashboard"></i> Dashboard / Edit Products
+                
+            </li><!-- active Finish -->
+            
+        </ol><!-- breadcrumb Finish -->
+        
+    </div><!-- col-lg-12 Finish -->
     
 </div><!-- row Finish -->
        
@@ -96,7 +109,7 @@
                
                <h3 class="panel-title"><!-- panel-title Begin -->
                    
-                   <i class="fa fa-money fa-fw"></i> Edit Product 
+                   <i class="fa fa-money fa-fw"></i> Insert Product 
                    
                </h3><!-- panel-title Finish -->
                
@@ -112,7 +125,45 @@
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_title" type="text" class="form-control" required value="<?php echo $p_title; ?>" >
+                          <input name="product_title" type="text" class="form-control" required value="<?php echo $p_title; ?>">
+                          
+                      </div><!-- col-md-6 Finish -->
+                       
+                   </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                       
+                      <label class="col-md-3 control-label"> Brand </label> 
+                      
+                      <div class="col-md-6"><!-- col-md-6 Begin -->
+                          
+                          <select name="manufacturer" class="form-control"><!-- form-control Begin -->
+
+                              <option disabled value="Select Manufacturer">Select Brand</option>
+                              
+                              <option selected value="<?php echo $manufacturer_id; ?>"> <?php echo $manufacturer_title; ?> </option>
+                              
+                              <?php 
+                              
+                              $get_manufacturer = "select * from manufacturers";
+                              $run_manufacturer = mysqli_query($con,$get_manufacturer);
+                              
+                              while ($row_manufacturer=mysqli_fetch_array($run_manufacturer)){
+                                  
+                                  $manufacturer_id = $row_manufacturer['manufacturer_id'];
+                                  $manufacturer_title = $row_manufacturer['manufacturer_title'];
+                                  
+                                  echo "
+                                  
+                                  <option value='$manufacturer_id'> $manufacturer_title </option>
+                                  
+                                  ";
+                                  
+                              }
+                              
+                              ?>
+                              
+                          </select><!-- form-control Finish -->
                           
                       </div><!-- col-md-6 Finish -->
                        
@@ -125,8 +176,10 @@
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
                           <select name="product_cat" class="form-control"><!-- form-control Begin -->
+
+                              <option disabled value="Select Product Category">Select Product Category</option>       
                               
-                                <option value="<?php echo $p_cat; ?>"> <?php echo $p_cat_title; ?> </option>
+                              <option value="<?php echo $p_cat; ?>"> <?php echo $p_cat_title; ?> </option>
                               
                               <?php 
                               
@@ -161,8 +214,10 @@
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
                           <select name="cat" class="form-control"><!-- form-control Begin -->
+
+                              <option disabled value="Select Category">Select Category</option>
                               
-                                <option value="<?php echo $cat; ?>"> <?php echo $cat_title; ?> </option>
+                              <option value="<?php echo $cat; ?>"> <?php echo $cat_title; ?> </option>
                               
                               <?php 
                               
@@ -196,8 +251,8 @@
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img1" type="file" class="form-control" required>
-
+                          <input name="product_img1" type="file" class="form-control">
+                          
                           <br>
                           
                           <img width="70" height="70" src="product_images/<?php echo $p_image1; ?>" alt="<?php echo $p_image1; ?>">
@@ -213,7 +268,7 @@
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
                           <input name="product_img2" type="file" class="form-control">
-
+                          
                           <br>
                           
                           <img width="70" height="70" src="product_images/<?php echo $p_image2; ?>" alt="<?php echo $p_image2; ?>">
@@ -229,7 +284,7 @@
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
                           <input name="product_img3" type="file" class="form-control form-height-custom">
-
+                          
                           <br>
                           
                           <img width="70" height="70" src="product_images/<?php echo $p_image3; ?>" alt="<?php echo $p_image3; ?>">
@@ -269,9 +324,9 @@
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
                           <textarea name="product_desc" cols="19" rows="6" class="form-control">
-
-                            <?php echo $p_desc; ?>
-
+                              
+                              <?php echo $p_desc; ?>
+                              
                           </textarea>
                           
                       </div><!-- col-md-6 Finish -->
@@ -299,9 +354,7 @@
     </div><!-- col-lg-12 Finish -->
     
 </div><!-- row Finish -->
-        
-    <script src="js/jquery-331.min.js"></script>
-    <script src="js/bootstrap-337.min.js"></script> 
+   
     <script src="js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea'});</script>
 </body>
@@ -315,34 +368,55 @@ if(isset($_POST['update'])){
     $product_title = $_POST['product_title'];
     $product_cat = $_POST['product_cat'];
     $cat = $_POST['cat'];
+    $manufacturer_id = $_POST['manufacturer'];
     $product_price = $_POST['product_price'];
     $product_keywords = $_POST['product_keywords'];
     $product_desc = $_POST['product_desc'];
-    
-    $product_img1 = $_FILES['product_img1']['name'];
-    $product_img2 = $_FILES['product_img2']['name'];
-    $product_img3 = $_FILES['product_img3']['name'];
-    
-    $temp_name1 = $_FILES['product_img1']['tmp_name'];
-    $temp_name2 = $_FILES['product_img2']['tmp_name'];
-    $temp_name3 = $_FILES['product_img3']['tmp_name'];
-    
-    move_uploaded_file($temp_name1,"product_images/$product_img1");
-    move_uploaded_file($temp_name2,"product_images/$product_img2");
-    move_uploaded_file($temp_name3,"product_images/$product_img3");
-    
-    $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',date=NOW(),product_title='$product_title',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_keywords='$product_keywords',product_desc='$product_desc',product_price='$product_price' where product_id='$p_id'";
-    
-    $run_product = mysqli_query($con,$update_product);
-    
-    if($run_product){
+
+    if(is_uploaded_file($_FILES['file']['tmp_name'])){
+
+            // work for upload / update image
         
-       echo "<script>alert('Your product has been updated Successfully')</script>"; 
+        $product_img1 = $_FILES['product_img1']['name'];
+        $product_img2 = $_FILES['product_img2']['name'];
+        $product_img3 = $_FILES['product_img3']['name'];
         
-       echo "<script>window.open('index.php?view_product','_self')</script>"; 
+        $temp_name1 = $_FILES['product_img1']['tmp_name'];
+        $temp_name2 = $_FILES['product_img2']['tmp_name'];
+        $temp_name3 = $_FILES['product_img3']['tmp_name'];
         
-    }
+        move_uploaded_file($temp_name1,"product_images/$product_img1");
+        move_uploaded_file($temp_name2,"product_images/$product_img2");
+        move_uploaded_file($temp_name3,"product_images/$product_img3");
+        
+        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_keywords='$product_keywords',product_desc='$product_desc',product_price='$product_price' where product_id='$p_id'";
+        
+        $run_product = mysqli_query($con,$update_product);
+        
+        if($run_product){
             
+        echo "<script>alert('Your product has been updated Successfully')</script>"; 
+            
+        echo "<script>window.open('index.php?view_products','_self')</script>"; 
+            
+        }
+        
+    }else{
+
+        // work when no update image
+        
+        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_keywords='$product_keywords',product_desc='$product_desc',product_price='$product_price' where product_id='$p_id'";
+        
+        $run_product = mysqli_query($con,$update_product);
+        
+        if($run_product){
+            
+        echo "<script>alert('Your product has been updated Successfully')</script>"; 
+            
+        echo "<script>window.open('index.php?view_products','_self')</script>"; 
+            
+        }
+    }
     
 }
 

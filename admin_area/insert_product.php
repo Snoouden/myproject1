@@ -64,6 +64,42 @@
                       </div><!-- col-md-6 Finish -->
                        
                    </div><!-- form-group Finish -->
+
+                   <div class="form-group"><!-- form-group Begin -->
+                       
+                      <label class="col-md-3 control-label"> Brand </label> 
+                      
+                      <div class="col-md-6"><!-- col-md-6 Begin -->
+                          
+                          <select name="manufacturer" class="form-control"><!-- form-control Begin -->
+                              
+                              <option selected disabled> Select a Brand </option>
+                              
+                              <?php 
+                              
+                              $get_manufacturer = "select * from manufacturers";
+                              $run_manufacturer = mysqli_query($con,$get_manufacturer);
+                              
+                              while ($row_manufacturer=mysqli_fetch_array($run_manufacturer)){
+                                  
+                                  $manufacturer_id = $row_manufacturer['manufacturer_id'];
+                                  $manufacturer_title = $row_manufacturer['manufacturer_title'];
+                                  
+                                  echo "
+                                  
+                                  <option value='$manufacturer_id'> $manufacturer_title </option>
+                                  
+                                  ";
+                                  
+                              }
+                              
+                              ?>
+                              
+                          </select><!-- form-control Finish -->
+                          
+                      </div><!-- col-md-6 Finish -->
+                       
+                   </div><!-- form-group Finish -->
                    
                    <div class="form-group"><!-- form-group Begin -->
                        
