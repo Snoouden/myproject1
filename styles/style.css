@@ -8,14 +8,12 @@ Theme Ver         : 1.1
 
 /* General Styles */
 
-
 body{
     font-size: 14px;
     line-height: 1.42857143;
     color: #333333;
     background: #f0f0f0;
     overflow-x: hidden;
-    padding-bottom: 1000px;
 }
 
 /* Top Styles */
@@ -176,12 +174,12 @@ body{
     text-transform: uppercase;
 }
 #content{
-    padding-left: 25px;
+   padding-left: 25px; 
 }
 .single{
     width: 290px;
 }
-@media(max-width: 768px){
+@media(max-width:768px){
     .single{
         width: 60%;
         margin: 0 auto;
@@ -215,14 +213,15 @@ body{
 #content .product .text h3 a{
     color: rgb(85, 85, 85);
 }
+
 /*  Breadcrumb Styles  */
 
 .breadcrumb{
     padding: 8px 15px;
     margin-bottom: 20px;
     background: #ffffff;
-    border-radius: 5x;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 5,);
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
 }
 .breadcrumb> li + li:before{
     content: ">\00a0";
@@ -232,7 +231,6 @@ body{
     .breadcrumb{
         padding: 8px 0px;
         text-align: center;
-  
     }
 }
 
@@ -252,7 +250,9 @@ body{
     padding: 5px 0px;
     margin: 0px;
 }
+
 /*  Shop Products Tyles  */
+
 @media(max-width: 768px){
     .center-responsive{
         width: 70%;
@@ -265,7 +265,8 @@ body{
         margin: 0px auto;
     }
 }
-/* details.php Styles*/
+
+/*  Details.php Styles */
 
 
 #content #productMain{
@@ -286,15 +287,14 @@ body{
     border: 2px solid transparent;
 }
 #content .headline{
-    height: 272px;
+    height: 305px;
 }
 
-/* Cart.php Styles */
+/*  Cart.php Styles  */
 
 #content #cart .table tbody tr td img{
     width: 50px;
 }
-
 #content #cart .table tbody tr td input{
     width: 40px;
     text-align: right;
@@ -332,17 +332,22 @@ body{
     color: #999999;
 }
 #content #order-summary table tr.total td,
-content #order-summary table tr.total td{
+#content #order-summary table tr.total th{
     font-size: 18px;
     color: #555555;
     font-weight: 700;
 }
-/* For Firefox Only */
+
+/*  For Firefox Only  */
+
+@-moz-document url-prefix(){
+    .form-height-custom{
+        height: auto;
+    }
+}
 
 
-
-
-/* Footer Styles */
+/*  Footer Styles  */
 
 #footer{
     background: #e0e0e0;
@@ -393,12 +398,12 @@ content #order-summary table tr.total td{
 #copyright p{
     margin: 0px;
 }
-
+                            
 .nav.category-menu{
     margin-top: -26px;
 }    
 .scroll-menu{
-    height: 360px;
+    height: 260px;
     overflow-y: scroll;
 }   
 .checkbox span{
@@ -459,3 +464,57 @@ content #order-summary table tr.total td{
     max-height: 252px;
     width: 100%;
 }
+
+/* styling the label begin */
+
+.label{
+    color: #000;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    top: 10px;
+    padding-left: 51px;
+    z-index: 20;
+}
+
+.label .labelBackground{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.label .theLabel{
+    position: relative;
+    width: 100px;
+    padding: 6px 50px 6px 15px;
+    margin: 10px 50px 10px -71px;
+    color: #fff;
+    text-shadow: 3px 3px 3px grey;
+}
+
+.label.sale .theLabel{
+    background: rgb(255, 0, 64);
+}
+
+.label.new .theLabel{
+    background: #4fbfa8;
+}
+
+.label .theLabel:before,
+.label .theLabel:after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.label .theLabel:after{
+    left: 0;
+    top: 100%;
+    border-width: 5px 10px;
+    border-style: solid;
+    border-color: #000 #000 transparent transparent;
+}
+
+/* styling the label finish */

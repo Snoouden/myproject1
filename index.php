@@ -168,21 +168,21 @@
 
     </div><!-- hot Finish -->
      
-    <div id="content" class="container"><!-- containe Begin -->
-
-         <div class="row"><!-- row Begin -->
-
-            <?php
-            
-            getPro();
-            
-            ?>
-
-         </div><!-- #row Finish -->
-
-    </div><!-- containe Finish -->
-
-    <?php
+    <div id="content" class="container"><!-- container Begin -->
+       
+       <div class="row"><!-- row Begin -->
+          
+          <?php 
+           
+           getPro();
+           
+           ?>
+           
+       </div><!-- row Finish -->
+       
+    </div><!-- container Finish -->
+   
+    <?php 
     
       include("includes/footer.php");
       
