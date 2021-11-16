@@ -77,6 +77,8 @@
 
                                             $pro_storage = $row_cart['storage'];
 
+                                            $pro_sale = $row_cart['p_price'];
+
                                                     $get_products = "select * from products where product_id='$pro_id'";
 
                                                     $run_products = mysqli_query($con,$get_products);
@@ -90,11 +92,13 @@
 
                                                             $only_price = $row_product['product_price'];
 
-                                                            $sub_total = $row_product['product_price']*$pro_qty;
+                                                            $sub_total = $pro_sale*$pro_qty;
 
-                                                            $total += $sub_total;
+                                                            $_SESSION['pro_qty'] = $pro_qty;
+                                           
+                                                         $total += $sub_total;
                                                                                                                                                                            
-                                                ?>
+                                    ?>
 
                                     <tr><!-- tr Begin -->
 
@@ -110,7 +114,7 @@
                                         </td>
                                         <td>
 
-                                           <?php echo $pro_qty; ?>
+                                            <input type="text" name="quantity" data-product_id="<?php echo $pro_id; ?>" value="<?php echo $_SESSION['pro_qty']; ?>" class="quantity form-control">
 
                                         </td>
                                         <td>
@@ -120,7 +124,7 @@
                                         </td>
                                         <td>
 
-                                            <?php echo $only_price; ?>
+                                            <?php echo $pro_sale; ?>
 
                                         </td>
 
