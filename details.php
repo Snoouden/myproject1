@@ -485,45 +485,126 @@ if(isset($_GET['pro_id'])){
                    
                    <?php 
                    
-                    $get_products = "select * from products order by rand() DESC LIMIT 0,3";
+                    $get_products = "select * from products order by rand() LIMIT 0,3";
                    
                     $run_products = mysqli_query($con,$get_products);
                    
                    while($row_products=mysqli_fetch_array($run_products)){
                        
-                       $pro_id = $row_products['product_id'];
-                       
-                       $pro_title = $row_products['product_title'];
-                       
-                       $pro_img1 = $row_products['product_img1'];
-                       
-                       $pro_price = $row_products['product_price'];
-                       
-                       echo "
-                       
-                        <div class='col-md-3 col-sm-6 center-responsive'>
+                    $pro_id = $row_products['product_id'];
+        
+                    $pro_title = $row_products['product_title'];
+                    
+                    $pro_price = $row_products['product_price'];
+            
+                    $pro_sale_price = $row_products['product_sale'];
+                    
+                    $pro_img1 = $row_products['product_img1'];
+                    
+                    $pro_label = $row_products['product_label'];
+                    
+                    $manufacturer_id = $row_products['manufacturer_id'];
+            
+                    $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
+            
+                    $run_manufacturer = mysqli_query($db,$get_manufacturer);
+            
+                    $row_manufacturer = mysqli_fetch_array($run_manufacturer);
+            
+                    $manufacturer_title = $row_manufacturer['manufacturer_title'];
+            
+                    if($pro_label == "sale"){
+            
+                        $product_price = " <del> $ $pro_price </del> ";
+            
+                        $product_sale_price = "/ $ $pro_sale_price ";
+            
+                    }else{
+            
+                        $product_price = "  $ $pro_price  ";
+            
+                        $product_sale_price = "";
+            
+                    }
+            
+                    if($pro_label == ""){
+            
+                    }else{
+            
+                        $product_label = "
                         
-                            <div class='product same-height'>
+                            <a href='#' class='label $pro_label'>
                             
-                                <a href='details.php?pro_id=$pro_id'>
+                                <div class='theLabel'> $pro_label </div>
+                                <div class='labelBackground'>  </div>
+                            
+                            </a>
+                        
+                        ";
+            
+                    }
+                    
+                    echo "
+                    
+                    <div class='col-md-3 col-sm-6 center-responsive'>
+                    
+                        <div class='product'>
+                        
+                            <a href='details.php?pro_id=$pro_id'>
+                            
+                                <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
+                            
+                            </a>
+                            
+                            <div class='text'>
+            
+                            <center>
+                            
+                                <p class='btn btn-primary'> $manufacturer_title </p>
+                            
+                            </center>
+                            
+                                <h3>
+                        
+                                    <a href='details.php?pro_id=$pro_id'>
+            
+                                        $pro_title
+            
+                                    </a>
                                 
-                                    <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
+                                </h3>
                                 
-                                </a>
+                                <p class='price'>
                                 
-                                <div class='text'>
+                                $product_price &nbsp;$product_sale_price
                                 
-                                    <h3> <a href='details.php?pro_id=$pro_id'> $pro_title </a> </h3>
-                                    
-                                    <p class='price'> $ $pro_price </p>
+                                </p>
                                 
-                                </div>
+                                <p class='button'>
+                                
+                                    <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+            
+                                        View Details
+            
+                                    </a>
+                                
+                                    <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+            
+                                        <i class='fa fa-shopping-cart'></i> Add to Cart
+            
+                                    </a>
+                                
+                                </p>
                             
                             </div>
+            
+                            $product_label
                         
                         </div>
-                       
-                       ";
+                    
+                    </div>
+                    
+                    ";
                        
                    }
                    

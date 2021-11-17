@@ -34,7 +34,9 @@ function add_cart(){
         
         $product_qty = $_POST['product_qty'];
         
-        $product_size = $_POST['product_size'];
+        $product_memory = $_POST['product_memory'];
+
+        $product_storage = $_POST['product_storage'];
         
         $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
         
@@ -69,7 +71,7 @@ function add_cart(){
 
             }
             
-            $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
+            $query = "insert into cart (p_id,ip_add,qty,p_price,memory,storage) values ('$p_id','$ip_add','$product_qty','$product_price','$product_memory','$product_storage')";
             
             $run_query = mysqli_query($db,$query);
             
