@@ -45,7 +45,7 @@
                 </li><!-- li finish -->
                 
                 <li><!-- li begin -->
-                    <a href="index.php?view_products"><!-- a href begin -->
+                    <a href="index.php?view_product"><!-- a href begin -->
                         
                         <i class="fa fa-fw fa-envelope"></i> Products
                         
@@ -220,6 +220,25 @@
                     </li><!-- li finish -->
                     <li><!-- li begin -->
                         <a href="index.php?view_boxes"> View Boxes </a>
+                    </li><!-- li finish -->
+                </ul><!-- collapse finish -->
+                
+            </li><!-- li finish -->
+
+            <li><!-- li begin -->
+                <a href="#" data-toggle="collapse" data-target="#coupon"><!-- a href begin -->
+                        
+                        <i class="fa fa-fw fa-book"></i> Coupons
+                        <i class="fa fa-fw fa-caret-down"></i>
+                        
+                </a><!-- a href finish -->
+                
+                <ul id="coupon" class="collapse"><!-- collapse begin -->
+                    <li><!-- li begin -->
+                        <a href="index.php?insert_coupon"> Insert Coupon </a>
+                    </li><!-- li finish -->
+                    <li><!-- li begin -->
+                        <a href="index.php?view_coupons"> View Coupons </a>
                     </li><!-- li finish -->
                 </ul><!-- collapse finish -->
                 

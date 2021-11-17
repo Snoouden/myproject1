@@ -47,7 +47,7 @@
                 </div><!-- panel-heading row finish -->
             </div><!-- panel-heading finish -->
             
-            <a href="index.php?view_products"><!-- a href begin -->
+            <a href="index.php?view_product"><!-- a href begin -->
                 <div class="panel-footer"><!-- panel-footer begin -->
                    
                     <span class="pull-left"><!-- pull-left begin -->

@@ -13,14 +13,20 @@
 ?>
 
 <?php 
-
-if(isset($_GET['pro_id'])){
     
     $product_id = $_GET['pro_id'];
     
-    $get_product = "select * from products where product_id='$product_id'";
+    $get_product = "select * from products where product_url='$product_id'";
     
     $run_product = mysqli_query($con,$get_product);
+
+    $check_product = mysqli_num_rows($run_product);
+
+    if($check_product == 0){
+
+        echo "<script>window.open('index.php','_self')</script>";
+
+    }else{
     
     $row_products = mysqli_fetch_array($run_product);
     
@@ -33,7 +39,7 @@ if(isset($_GET['pro_id'])){
     $pro_sale_price = $row_products['product_sale'];
     
     $pro_desc = $row_products['product_desc'];
-    
+           
     $pro_img1 = $row_products['product_img1'];
     
     $pro_img2 = $row_products['product_img2'];
@@ -66,8 +72,6 @@ if(isset($_GET['pro_id'])){
     $row_p_cat = mysqli_fetch_array($run_p_cat);
     
     $p_cat_title = $row_p_cat['p_cat_title'];
-    
-}
 
 ?>
 
@@ -283,7 +287,7 @@ if(isset($_GET['pro_id'])){
                    </li>
 
                    <li>
-                       <a href="shop.php?p_cat=<?php echo $p_cat_id; ?>"><?php echo $p_cat_title; ?></a>
+                        <a href="shop.php?p_cat=<?php echo $p_cat_id; ?>"><?php echo $p_cat_title; ?></a>
                    </li>
                    <li> <?php echo $pro_title; ?> </li>
 
@@ -337,11 +341,11 @@ if(isset($_GET['pro_id'])){
 
                              <div class="col-sm-6"><!-- col-sm-6 Begin -->
                                  <div class="box"><!-- box Begin -->
-                                 <h1 class="text-center"> <?php echo $pro_title; ?></h1>
+                                 <h1 class="text-center"> <?php echo $pro_title; ?> </h1>
                            
-                                 <?php add_cart(); ?>  
+                                   
 
-                                    <form action="details.php?add_cart=<?php echo $product_id; ?>" class="form-horizontal" method="post"><!-- form-horizontal Begin -->
+                                    <form class="form-horizontal" method="post"><!-- form-horizontal Begin -->
 
                                         <div class="form-group" ><!--  form-group Begin -->
                                             <label for="" class="col-md-5 control-label">Products Quantity</label>
@@ -424,11 +428,73 @@ if(isset($_GET['pro_id'])){
 
                                         ?>
 
-                                        <p class="text-center buttons"><button class="btn btn-primary i fa fa-shopping-cart"> Add to cart</button></p>
+                                            <p class="text-center buttons"><button type="submit" name="add_cart" class="btn btn-primary i fa fa-shopping-cart"> Add to cart</button></p>  
 
 
                                     </form><!--  form-horizontal Finish -->
 
+                                    <?php 
+                           
+                                    if(isset($_POST['add_cart'])){
+                    
+                                        $ip_add = getRealIpUser();
+                    
+                                        $pro_id = $row_products['product_id'];
+                                        
+                                        $p_id = $pro_id;
+                                        
+                                        $product_qty = $_POST['product_qty'];
+                                        
+                                        $product_memory = $_POST['product_memory'];
+
+                                        $product_storage = $_POST['product_storage'];
+
+                                        $pro_url = $row_products['product_url'];
+                                                                                                   
+                                        $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
+                                        
+                                        $run_check = mysqli_query($con,$check_product);
+                                        
+                                        if(mysqli_num_rows($run_check)>0){
+                                            
+                                            echo "<script>alert('This product has already added in cart')</script>";
+                                            echo "<script>window.open('$pro_url','_self')</script>";
+                                            
+                                        }else{
+                                
+                                            $get_price ="select * from products where product_id='$p_id'";
+                                
+                                            $run_price = mysqli_query($con,$get_price);
+                                
+                                            $row_price = mysqli_fetch_array($run_price);
+                                
+                                            $pro_price = $row_price['product_price'];
+                                
+                                            $pro_sale = $row_price['product_sale'];
+                                
+                                            $pro_label = $row_price['product_label'];
+                                
+                                            if($pro_label == "sale"){
+                                
+                                                $product_price = $pro_sale;
+                                
+                                            }else{
+                                
+                                                $product_price = $pro_price;
+                                
+                                            }
+                                            
+                                            $query = "insert into cart (p_id,ip_add,qty,p_price,memory,storage) values ('$p_id','$ip_add','$product_qty','$product_price','$product_memory','$product_storage')";
+                                            
+                                            $run_query = mysqli_query($con,$query);
+                                            
+                                            echo "<script>window.open('$pro_url','_self')</script>";
+                                            
+                                        }
+                                        
+                                    }
+                                    
+                           ?>
 
                                  </div><!-- box Finish -->
 
@@ -498,6 +564,8 @@ if(isset($_GET['pro_id'])){
                     $pro_price = $row_products['product_price'];
             
                     $pro_sale_price = $row_products['product_sale'];
+
+                    $pro_url = $row_products['product_url'];
                     
                     $pro_img1 = $row_products['product_img1'];
                     
@@ -550,7 +618,7 @@ if(isset($_GET['pro_id'])){
                     
                         <div class='product'>
                         
-                            <a href='details.php?pro_id=$pro_id'>
+                            <a href='$pro_url'>
                             
                                 <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
                             
@@ -566,7 +634,7 @@ if(isset($_GET['pro_id'])){
                             
                                 <h3>
                         
-                                    <a href='details.php?pro_id=$pro_id'>
+                                    <a href='$pro_url'>
             
                                         $pro_title
             
@@ -582,13 +650,13 @@ if(isset($_GET['pro_id'])){
                                 
                                 <p class='button'>
                                 
-                                    <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+                                    <a class='btn btn-default' href='$pro_url'>
             
                                         View Details
             
                                     </a>
                                 
-                                    <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+                                    <a class='btn btn-primary' href='$pro_url'>
             
                                         <i class='fa fa-shopping-cart'></i> Add to Cart
             
@@ -629,4 +697,5 @@ if(isset($_GET['pro_id'])){
     
 </body>
 </html>
-   
+  
+<?php } ?>
