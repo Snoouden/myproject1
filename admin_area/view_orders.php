@@ -95,15 +95,7 @@
                                     
                                     $customer_email = $row_customer['customer_email'];
                                     
-                                    $get_c_order = "select * from customer_orders where order_id='$order_id'";
                                     
-                                    $run_c_order = mysqli_query($con,$get_c_order);
-                                    
-                                    $row_c_order = mysqli_fetch_array($run_c_order);
-                                    
-                                    $order_date = $row_c_order['order_date'];
-                                    
-                                    $order_amount = $row_c_order['due_amount'];
                                     
                                     $i++;
                             
@@ -117,8 +109,30 @@
                                 <td> <?php echo $qty; ?></td>
                                 <td> <?php echo $memory; ?> </td>
                                 <td> <?php echo $storage; ?></td>
-                                <td> <?php echo $order_date; ?> </td>
-                                <td> <?php echo $order_amount; ?> </td>
+                                <td> 
+                                    
+                                    <?php 
+                                
+                                        $get_c_order = "select * from customer_orders where order_id='$order_id'";
+                                                    
+                                        $run_c_order = mysqli_query($con,$get_c_order);
+                                                    
+                                        $row_c_order = mysqli_fetch_array($run_c_order);
+                                                    
+                                        $order_date = $row_c_order['order_date'];
+                                                    
+                                        $order_amount = $row_c_order['due_amount'];
+                                        
+                                        echo $order_date; 
+                                
+                                
+                                
+                                    ?> 
+                                
+                                
+                                 </td>
+                                <td> <?php echo $order_amount;  ?> </td>
+                                                                   
                                 <td>
                                     
                                     <?php 
